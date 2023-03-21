@@ -6,6 +6,8 @@ public class Main {
     public static int[] prices = { 50, 135, 65, 53 };
     public static int MIN_COST_FOR_BONUS = 1000;
 
+    public static String[] productsOnSale = { "Хлеб", "Мороженка" };
+
     public static void main(String[] args) {
         System.out.println("Добро пожаловать в магазин!");
         System.out.println("Наш ассортимент:");
@@ -35,6 +37,9 @@ public class Main {
 
         System.out.println("Ваша корзина покупок:");
         int sum = 0;
+
+
+
         for (int i = 0; i < products.length; i++) {
             sum += prices[i] * counts[i];
         }
