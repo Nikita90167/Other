@@ -43,6 +43,7 @@ public class Main {
                 for (String saleProduct : productsOnSale) {
                     if (products[i].equals(saleProduct)) {
                         isOnSale = true;
+                        break;
                     }
                     break;
                 }
