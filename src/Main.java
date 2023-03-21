@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static String[] products = { "Хлеб", "Пачка гречки", "Упаковка яиц", "Мороженка" };
-    public static int[] prices = { 50, 135, 65, 53 };
+    public static String[] products = {"Хлеб", "Пачка гречки", "Упаковка яиц", "Мороженка"};
+    public static int[] prices = {50, 135, 65, 53};
     public static int MIN_COST_FOR_BONUS = 1000;
 
-    public static String[] productsOnSale = { "Хлеб", "Мороженка" };
+    public static String[] productsOnSale = {"Хлеб", "Мороженка"};
 
     public static void main(String[] args) {
         System.out.println("Добро пожаловать в магазин!");
@@ -45,6 +45,7 @@ public class Main {
                     if (products[i].equals(saleProduct)) {
                         isOnSale = true;
                     }
+                    break;
                 }
                 if (isOnSale) {
                     sum += prices[i] * (counts[i] / 3 * 2 + counts[i] % 3);
@@ -62,22 +63,21 @@ public class Main {
                     if (products[i].equals(saleProduct)) {
                         isOnSale = true;
                     }
+                    break;
                 }
                 if (isOnSale) {
-                    if(doBonus) {
+                    if (doBonus) {
                         System.out.println("\t" + products[i] + " " + counts[i] + 1 + " шт. за " + (prices[i] * (counts[i] / 3 * 2 + counts[i] % 3)) + " руб. (распродажа!) + бонус за чек выше " + MIN_COST_FOR_BONUS + " руб.");
-                    }
-                    else if (isOnSale){
+                    } else if (isOnSale) {
                         System.out.println("\t" + products[i] + " " + counts[i] + " шт. за " + (prices[i] * (counts[i] / 3 * 2 + counts[i] % 3)) + " руб. (распродажа!)");
                     }
-                } else if (doBonus){
-                    System.out.println("\t" + products[i] + " " + counts[i] + 1 + " шт. за " + (prices[i] * counts[i]) + " + бонус за чек выше " + MIN_COST_FOR_BONUS + " руб.");
+                } else if (doBonus) {
+                    System.out.println("\t" + products[i] + " " + counts[i] + 1 + " шт. за " + (prices[i] * counts[i]) + " бонус за чек выше " + MIN_COST_FOR_BONUS + " руб.");
                 } else {
                     System.out.println("\t" + products[i] + " " + counts[i] + " шт. за " + (prices[i] * counts[i]) + " руб.");
                 }
             }
         }
-
         System.out.println("Итого: " + sum + " руб.");
     }
 }
