@@ -37,7 +37,6 @@ public class Main {
 
         System.out.println("Ваша корзина покупок:");
         int sum = 0;
-        boolean doBonus = sum >= MIN_COST_FOR_BONUS;
         for (int i = 0; i < products.length; i++) {
             if (counts[i] != 0) {
                 boolean isOnSale = false;
@@ -59,20 +58,19 @@ public class Main {
         for (int i = 0; i < products.length; i++) {
             if (counts[i] != 0) {
                 boolean isOnSale = false;
+                boolean doBonus = sum >= MIN_COST_FOR_BONUS;
                 for (String saleProduct : productsOnSale) {
                     if (products[i].equals(saleProduct)) {
                         isOnSale = true;
                     }
                     break;
                 }
-                if (isOnSale) {
-                    if (doBonus) {
-                        System.out.println("\t" + products[i] + " " + counts[i] + 1 + " шт. за " + (prices[i] * (counts[i] / 3 * 2 + counts[i] % 3)) + " руб. (распродажа!) + бонус за чек выше " + MIN_COST_FOR_BONUS + " руб.");
-                    } else if (isOnSale) {
-                        System.out.println("\t" + products[i] + " " + counts[i] + " шт. за " + (prices[i] * (counts[i] / 3 * 2 + counts[i] % 3)) + " руб. (распродажа!)");
-                    }
+                if (isOnSale && doBonus) {
+                    System.out.println("\t" + products[i] + " " + counts[i] + 1 + " шт. за " + (prices[i] * (counts[i] / 3 * 2 + counts[i] % 3)) + " руб. (распродажа!) + бонус за чек выше " + MIN_COST_FOR_BONUS + " руб.");
                 } else if (doBonus) {
                     System.out.println("\t" + products[i] + " " + counts[i] + 1 + " шт. за " + (prices[i] * counts[i]) + " бонус за чек выше " + MIN_COST_FOR_BONUS + " руб.");
+                } else if (isOnSale) {
+                    System.out.println("\t" + products[i] + " " + counts[i] + " шт. за " + (prices[i] * (counts[i] / 3 * 2 + counts[i] % 3)) + " руб. (распродажа!)");
                 } else {
                     System.out.println("\t" + products[i] + " " + counts[i] + " шт. за " + (prices[i] * counts[i]) + " руб.");
                 }
